@@ -18,6 +18,12 @@ def main(csv_path: str, out_dir: str = "./artifacts"):
     Base.metadata.create_all(bind=engine)
     df = pd.read_csv(csv_path)
 
+    # 先做去重与去空白，避免 CSV 中重复条目导致检索时看到重复结果
+    for col in ["title","author","subject","abstract","tags","availability"]:
+        if col in df.columns:
+            df[col] = df[col].fillna("").astype(str).str.strip()
+    df = df.drop_duplicates(subset=["title","author"], keep="first").reset_index(drop=True)
+
     with SessionLocal() as db:
         db.query(Item).delete()
         db.commit()
