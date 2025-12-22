@@ -5,3 +5,9 @@ frontend/node_modules/
 .venv/
 CLAUDE.md
 start.md
+# Local/dev artifacts
+frontend/.vite/
+node_modules/
+recsys.db
+artifacts/
+

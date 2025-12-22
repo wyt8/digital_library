@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root{
+  --primary:#2563eb;
+  --accent:#06b6d4;
+}
+
+.brand-gradient{
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #fff;
+}
